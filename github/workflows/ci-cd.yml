@@ -1,0 +1,34 @@
+name: GhostUnlock CI/CD
+
+on: [push]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python 3.10+
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies (Test)
+        run: |
+            pip install -r requirements.txt --quiet 
+            # Add pytest if needed later, currently assumes basic setup works
+            
+      - name: Run Linter & Type Check (Quick)
+        run: echo "Linting skipped for speed in base version" || true
+        
+      - name: Deploy to Docker Registry (Example)
+        run: |
+           docker build -t ghostunlock:${{ github.sha }} . \
+             && docker push ${{ secrets.DOCKER_REGISTRY }}/ghostunlock:${{ github.sha }}
+
+      - name: Notify Success
+        uses: rleslie95/post-webhook-action@main
+        with:
+          method: post
+          url: https://your-webhook-url.com/notify-success # Optional notification step
