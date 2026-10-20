@@ -1,0 +1,17 @@
+server:
+  host: "0.0.0.0"
+  port: 81 
+database:
+  drivername: "sqlite+aiosqlite:///./ghost_unlock.db"
+workflows:
+  frp_rotation_interval_ms: 5000        # Rotate IP every 5 seconds if blocked
+  icloud_retry_delay_sec: 3             # Wait before retrying iCloud token check
+  
+tracking:
+  google_hub_api_key_env_var: "GOOGLE_TRACKING_KEY" # Set this in .env or OS vars
+  imei_lookup_table_size_limit_mb: 256   # Optimized for VPS memory
+
+# Advanced Features (Default ON)
+features:
+  remote_factory_reset_enabled: true 
+  find_my_phone_integration: true  
