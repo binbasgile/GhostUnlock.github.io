@@ -1,0 +1,31 @@
+body { 
+    background-color: #0d1117; /* GitHub Dark Dimmed */ 
+    color: #c9d1d9; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+} 
+
+.status-indicator {
+    position: fixed; top: 20px; right: 20px;
+    padding: 10px 20px; border-radius: 8px;
+    background-color: #238636; color: white;
+    font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.container { max-width: 800px; margin: auto; padding: 40px;}
+
+#status-box { 
+    margin-top: 2rem; 
+    padding: 1.5rem; 
+    border-left: 4px solid #58a6ff; 
+    background-color: rgba(9, 17, 29, .5);
+}
+
+/* Animations for "Regenerating" effect */
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(35, 134, 54, .4); }
+    70% { box-shadow: 0 0 0 10px rgba(35, 134, 54, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(35, 134, 54, .4); }
+}
+
+.success-box { animation: pulse-green 2s infinite; background-color: #238636; color:white;}
+.error-box { background-color: #da3633; color:white;}
